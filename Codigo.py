@@ -126,3 +126,80 @@ while jugar == "si":
         jugar = input("¿Quieres jugar a algo mas? ")
         jugar = jugar.lower()
         print()
+        
+        
+    if juego == 2:
+        
+            #Creamos variable ganancias
+            ganancias = 0
+            
+            
+            #Presentamos el juego
+            print("Bienvenido a la ruleta de la fortuna donde nunca hay dias malos")
+            print("Mira como se lanza la bolita GIRA QUE GIRA")
+            
+            #Le creamos el nombre y lo metemos en la lista
+            usuario = input("Escribe tu nombre como jugador: ")
+            print()
+            
+            #Creamos el numero aleaorio que sera donde cae la bolita
+            import random
+            resultado = random.randint(1,5)
+            
+            #Creamos el numero aleatorio que decide color
+            import random
+            color = random.randint(1,2)
+            
+            #Creamos una capacidad de apuestas
+            tipo_apuesta = int(input("A que quieres apostar (1 = color) (2 = numero): "))
+            
+            
+            
+            if tipo_apuesta == 1:
+                
+                #SI HAS ACERTADO EL COLOR
+                dinero = int(input("¿Cuanto dinero tienes? "))
+                apuesta = int(input("¿Cuanto puedes apostar? "))
+                color_apuesta = int(input("De que color quieres que sea tu apuesta (1 = rojo) (2 = negro): "))
+                if color == color_apuesta:
+                    print("Has acertado el color")
+                    print()
+                    print(f"Has gando y tienes {(dinero - apuesta)+ apuesta*1.5}")
+                    ganancias = apuesta * 1.5 
+                
+                #SI HAS FALLADO EL COLOR
+                else:
+                    if color == 1:
+                        print("HA SALIDO ROJO")
+                        print()
+                        print(f"Tu color no es el correcto dado que el color es el rojo te quedan {dinero - apuesta}")
+                        ganancias = - apuesta
+                        print()
+                        print(f"Tienes unas ganacias de {ganancias} monedas")
+                    if color == 2:
+                        print("HA SALIDO NEGRO")
+                        print()
+                        print(f"Tu color no es el correcto dado que el color es el negro te quedan {dinero - apuesta}")
+                        ganancias = - apuesta
+                        print()
+                        print(f"Tienes unas ganacias de {ganancias} monedas")
+                        
+            if tipo_apuesta == 2:
+                
+                #SI HAS ACERTADO EL LUGAR
+                dinero = int(input("¿Cuanto dinero tienes? "))
+                apuesta = int(input("¿Cuanto puedes apostar? "))
+                lugar_apuesta = int(input("Elige una casilla de las 5: "))
+                if lugar_apuesta == resultado:
+                    print(f"OJO HAS ACERTADO la bolita ha caido en donde apostaste que es {resultado} te quedan {(dinero - apuesta) + apuesta * 4}")
+                    ganancias = apuesta * 4
+                    print()
+                    print(f"Tienes unas ganacias de {ganancias} monedas")
+                else:
+                    print(f"Oh vaya la bolita no ha caido en {lugar_apuesta} porque ha caido en {resultado} te has quedado  con {dinero - apuesta}")
+                    ganancias = dinero - apuesta
+                    print()
+                    print(f"Tienes unas ganacias de {ganancias} monedas")
+            jugar = input("¿Quieres jugar a algo mas? ")
+            jugar = jugar.lower()
+            print()
